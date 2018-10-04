@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title> View Posts </title>
+	</head>
+	<body>
+    <%posts.forEach(posts => {%>
+        <p>Title: <%= posts.title %></p>
+        <p>Message: <%= posts.body %></p>
+        <a href="posts/<%=posts.id%>">Read More</a>
+        <% }) %>
+</div>
+</body>
