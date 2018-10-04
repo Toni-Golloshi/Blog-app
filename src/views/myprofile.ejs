@@ -3,10 +3,23 @@
 		<title> My profile </title>
 	</head>
 	<body>
-    <h1> Welcome back </h1>
+    <h1> Welcome back <%=user.username%>.</h1>
       <a href="/logout">Click here to log out</a>
-      <a href="/addpost">Click here to add post</a>
       <a href="/vpost">Click here to view all posts</a>
-
+      <form method="post">
+        <p id="ptitle">Title</p>
+        <input type="text" id="title" placeholder="Write something.." required maxlength="20" name="title" autocomplete="off">
+        <p id="pmessage">Message</p>
+        <textarea rows="5" columns="10" type="text" id="textinput"  required placeholder="Write something.."  maxlength="1000" name="body" autocomplete="off"></textarea>
+        <input type="submit" id="button" value="Submit">
+        <!-- <button id="button" type="button">Click Me!</button> -->
+      </form>
+        <% for(let i=0;i<order.length;i++){%>
+        <p>Title  <%=order[i].title %></p>
+          <br>
+          <br>
+        <p>Body  <%=order[i].body %></p>
+          <br>
+        <%}%>
     </body>
     </html>

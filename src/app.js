@@ -119,13 +119,14 @@ app.post('/', function (req, res) {
 
 			if(email!== null && password === user.password){
         req.session.user = user;
-				res.redirect('/myprofile/:email');
+				res.redirect('/myprofile/:id');
 			} else {
 				res.redirect('/?message=' + encodeURIComponent('Invalid email or password.'));
 			}
 	});
 });
 
+// Log Out
 app.get('/logout', (req,res)=>{
   req.session.destroy(function(error) {
 		if(error) {
@@ -158,12 +159,51 @@ app.post('/signup', function(req, res){
 })
 
 // My Profile
-app.get('/myprofile/:email', (req,res)=>{
-  const user = req.session.user
-  console.log('User info '+ user)
-  res.render('myprofile',{user: user})
-})
+app.get('/myprofile/:id', (req,res)=>{
 
+  const user = req.session.user;
+
+  Post.findAll({
+  where: {
+    userId: req.session.user.id
+  },
+  include: [{
+    model: User
+  }]
+})
+.then(function(order){
+  res.render("myprofile", {user: user, order:order});
+})
+});
+
+
+  //
+  // console.log('User info '+ user)
+  // res.render('myprofile',{user: user})
+// })
+
+// Add posts.
+app.post('/myprofile/:id', function(req, res) {
+
+	let user = req.session.user.username;
+	let inputtitle = req.body.title;
+  let inputbody = req.body.body;
+
+	User.findOne({
+		where: {
+			username: user
+		}
+	})
+	.then(function(user){
+		return user.createPost({
+			title: inputtitle,
+      body: inputbody
+		})
+	})
+	.then( post => {
+		res.redirect(`/myprofile/:id`);
+	})
+});
 
 
 // View all posts
