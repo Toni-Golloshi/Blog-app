@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title> Full Post </title>
+	</head>
+	<body>
+    <p>Title  <%=order.title %></p>
+      <br>
+      <br>
+    <p>Body  <%=order.body %></p>
+      <br>
+
+
+      <form method="post">
+        <p>Comment</p>
+        <input type="text" id="title" placeholder="Leave a comment" required maxlength="20" name="cmnt" autocomplete="off">
+        <input type="submit" id="button" value="Submit">
+      </form>
+
+      <% for(let i=0;i < order.comments.length;i++){%>
+      <p>Title  <%=order.comments[i].com%></p>
+      <br>
+      <br>
+        <%}%>
+  </body>
+</html>

@@ -123,7 +123,12 @@ app.post('/', function (req, res) {
 			} else {
 				res.redirect('/?message=' + encodeURIComponent('Invalid email or password.'));
 			}
-	});
+
+
+	})
+  .catch(function(error){
+    res.redirect('/')
+  })
 });
 
 // Log Out
@@ -177,11 +182,6 @@ app.get('/myprofile/:id', (req,res)=>{
 });
 
 
-  //
-  // console.log('User info '+ user)
-  // res.render('myprofile',{user: user})
-// })
-
 // Add posts.
 app.post('/myprofile/:id', function(req, res) {
 
@@ -218,6 +218,39 @@ app.get('/vpost', (req, res) => {
   })
 }
 });
+
+//View specific post and the comments.
+
+app.get('/vpost/:postId', function(req, res){
+  const postId = req.params.postId;
+  let inputcomment = req.body.cmnt
+
+
+  Post.findOne({
+		where: {
+			id: postId
+		},
+		include: [{
+			model: User,
+      model: Comments
+		}]
+	})
+	.then(function(order){
+		res.render("singlepost", {order:order});
+	})
+});
+
+app.post('/vpost/:postId', function(req, res){
+	let inputcomment = req.body.cmnt
+
+			Comments.create({
+				com: inputcomment,
+        userId: req.session.user.id,
+        postId: req.params.postId
+			}).then( () => {
+				res.redirect(`/vpost/${req.params.postId}`);
+			});
+})
 
 
 
