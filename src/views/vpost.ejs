@@ -2,7 +2,37 @@
 	<head>
 		<title> All Posts </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style type="text/css">
+.space{
+  margin:2%;
+}
+body{
+  background: url("https://images.unsplash.com/photo-1516885922940-693dda5570af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd749a532762c37aeaebeae43c6f731e&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
 
+.color{
+  background-color: rgb(255,255,255,1);
+  border-radius: 5px;
+  padding-left: 1%;
+  margin-bottom: 4%;
+  padding-bottom: 1%;
+  -webkit-box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
+}
+
+.labelpush{
+  margin-left: 43%;
+}
+
+.bot{
+  margin-bottom: 1%;
+}
+</style>
 	</head>
 	<body>
 
@@ -10,7 +40,7 @@
       <div class="container">
         <a class="navbar-brand" href="#">
       <img src="./bckg.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-      Fake
+      Fakebook
     </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,15 +64,35 @@
     </div>
     </nav>
 
+<div class="space"></div>
 
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-3 col-sm-2 col-xs-1"></div>
+    <div class="col-md-6 col-sm-8 col-xs-1">
+      <%posts.forEach(posts => {%>
+        <div class="color">
+          <div class="form-group">
+            <h4 class="labelpush"><%=posts.title %></h4>
+            <!-- <p>Title: <%= posts.title %></p> -->
+          </div>
+          <div class="form-group">
+            <p><%= posts.body %></p>
+          </div>
+          <div align="center">
+            <a class="badge badge-info" href="vpost/<%=posts.id%>">Read full post and comments</a>
+          </div>
+        </div>
+            <% }) %>
+    </div>
+    <div class="col-md-3 col-sm-2 col-xs-1"></div>
 
+  </div>
+</div>
 
-    <%posts.forEach(posts => {%>
-        <p>Title: <%= posts.title %></p>
-        <p>Message: <%= posts.body %></p>
-        <a href="vpost/<%=posts.id%>">Read More</a>
-        <% }) %>
-
+<div class="bot" align="center">
+  <a class="badge badge-dark" href="vpost">To top </a>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 

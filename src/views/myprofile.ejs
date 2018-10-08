@@ -26,6 +26,9 @@
   background-color: rgb(255,255,255,1);
   border-radius: 5px;
   padding-left: 1%;
+  -webkit-box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
+  -moz-box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
+  box-shadow: 0px 0px 13px 2px rgba(194,194,194,1);
 }
 body{
   background: url("https://images.unsplash.com/photo-1516885922940-693dda5570af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd749a532762c37aeaebeae43c6f731e&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
@@ -38,11 +41,11 @@ body{
 	</head>
 	<body>
 
-    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="#">
       <img src="./bckg.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-      Fake
+      Fakebook
     </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -80,7 +83,6 @@ body{
             <div class="col-md-6 col-sm-6 col-xs-1 pushdown">
               <form method="post">
                 <div class="form-group">
-
                   <label class="labelpush" for="exampleFormControlInput1">Post title</label>
                   <input type="text" id="title" placeholder="Write something.." required maxlength="20" name="title" autocomplete="off" class="form-control">
                 </div>
