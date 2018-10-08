@@ -160,7 +160,10 @@ app.post('/signup', function(req, res){
 				password: inputpassword
 			}).then( () => {
 				res.redirect('/?message=' + encodeURIComponent("Your account got successfully created. Log in below."));
-			});
+			})
+      .catch(function(error){
+        res.redirect('/signup')
+      })
 })
 
 // My Profile
