@@ -2,7 +2,39 @@
 	<head>
 		<title> My profile </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<style type="text/css">
+.marging{
+  margin-top: 5%;
+}
+.labelpush{
+  margin-left: 39%;
+}
+.pushdown{
+  height: 25%;
+}
+.headerp{
+  margin-left: 1%;
+}
+.pushleft{
+  margin-left: 10%;
+}
 
+.bottom{
+  margin-bottom: 8%;
+}
+.color{
+  background-color: rgb(255,255,255,1);
+  border-radius: 5px;
+  padding-left: 1%;
+}
+body{
+  background: url("https://images.unsplash.com/photo-1516885922940-693dda5570af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd749a532762c37aeaebeae43c6f731e&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+}
+</style>
 	</head>
 	<body>
 
@@ -15,7 +47,6 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -34,32 +65,56 @@
     </div>
     </nav>
 
+        <div class="container">
+          <div class="row align-items-center marging bottom">
+            <div class="col-md-5 col-sm-6 col-xs-1">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-1">
+                  <h6 class="headerp">Welcome back <%=user.username%>.</h6>
+                    <img src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-unknown-3.jpg" alt="Smiley face" height="290" width="260">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-1"></div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-1 pushdown">
+              <form method="post">
+                <div class="form-group">
+
+                  <label class="labelpush" for="exampleFormControlInput1">Post title</label>
+                  <input type="text" id="title" placeholder="Write something.." required maxlength="20" name="title" autocomplete="off" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label class="labelpush" for="exampleFormControlTextarea1"> Post body</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" type="text" required placeholder="Write something.."  maxlength="1000" name="body" autocomplete="off"></textarea>
+                </div>
+                <input type="submit" id="button" value="Submit" class="space btn btn-info">
+
+              </form>
+              </div>
+            </div>
 
 
 
+        <div class="row">
+          <div class="col-md-5 col-sm-6 col-xs-1">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-1">
+            <h3 class="labelpush">My posts</h3>
+            <% for(let i=0;i<order.length;i++){%>
+              <div class="color">
+              <div class="form-group">
+                <p class="labelpush"> <%=order[i].title %></p>
+              </div>
+              <div class="form-group">
+                <p><%=order[i].body %></p>
+              </div>
+            </div>
+                <%}%>
 
-
-
-    <h1> Welcome back <%=user.username%>.</h1>
-      <a href="/logout">Click here to log out</a>
-      <a href="/vpost">Click here to view all posts</a>
-      <form method="post">
-        <p id="ptitle">Title</p>
-        <input type="text" id="title" placeholder="Write something.." required maxlength="20" name="title" autocomplete="off">
-        <p id="pmessage">Message</p>
-        <textarea rows="5" columns="10" type="text" id="textinput"  required placeholder="Write something.."  maxlength="1000" name="body" autocomplete="off"></textarea>
-        <input type="submit" id="button" value="Submit">
-        <!-- <button id="button" type="button">Click Me!</button> -->
-      </form>
-        <% for(let i=0;i<order.length;i++){%>
-        <p>Title  <%=order[i].title %></p>
-          <br>
-          <br>
-        <p>Body  <%=order[i].body %></p>
-
-          <br>
-        <%}%>
-
+            </div>
+          </div>
+      </div>
 
 
 
