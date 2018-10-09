@@ -32,6 +32,7 @@
 }
 body{
   background: url("https://images.unsplash.com/photo-1516885922940-693dda5570af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd749a532762c37aeaebeae43c6f731e&auto=format&fit=crop&w=1950&q=80") no-repeat center center fixed;
+  /* background: url("/img/back1.jpg") no-repeat center center fixed; */
   background-size: cover;
   -webkit-background-size: cover;
 -moz-background-size: cover;
@@ -41,10 +42,10 @@ body{
 	</head>
 	<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #b5cee9;">
       <div class="container">
         <a class="navbar-brand" href="#">
-      <img src="./bckg.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Fakebook
     </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,14 +75,16 @@ body{
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-1">
                   <h6 class="headerp">Welcome back <%=user.username%>.</h6>
-                    <img src="http://profilepicturesdp.com/wp-content/uploads/2018/07/profile-picture-unknown-3.jpg" alt="Smiley face" height="290" width="260">
+                    <img src="/img/prof.jpg" alt="Smiley face" height="290" width="260">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-1"></div>
               </div>
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-1 pushdown">
+
               <form method="post">
+
                 <div class="form-group">
                   <label class="labelpush" for="exampleFormControlInput1">Post title</label>
                   <input type="text" id="title" placeholder="Write something.." required maxlength="20" name="title" autocomplete="off" class="form-control">
