@@ -4,6 +4,8 @@ const ejs= require('ejs');
 const session = require('express-session');
 const Sequelize = require('sequelize');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const bcrypt = require('bcrypt');
+
 
 
 
@@ -99,6 +101,7 @@ app.post('/', function (req, res) {
   let email = req.body.email;
 	let password = req.body.password;
 
+
 	console.log('Just to make sure I get: '+email+" "+password);
 
 	if(email.length === 0) {
@@ -116,8 +119,9 @@ app.post('/', function (req, res) {
 			email: email
 		}
 	}).then(function(user){
+    ;
 
-			if(email!== null && password === user.password){
+			if(email!== null && bcrypt.compareSync(password, user.password)){
         req.session.user = user;
 				res.redirect('/myprofile/:id');
 			} else {
@@ -151,19 +155,23 @@ app.post('/signup', function(req, res){
 	let inputusername = req.body.username
   let inputemail = req.body.email
 	let inputpassword = req.body.password
+  let passwordhashed
+
 
 	console.log("I am receiving following user credentials: "+inputusername+" "+inputpassword);
 
+      bcrypt.hash(inputpassword, 10).then((hash)=>{
 			User.create({
 				username: inputusername,
         email: inputemail,
-				password: inputpassword
+				password: hash
 			}).then( () => {
 				res.redirect('/?message=' + encodeURIComponent("Your account got successfully created. Log in below."));
 			})
       .catch(function(error){
         res.redirect('/signup')
       })
+    })
 })
 
 // My Profile
