@@ -155,7 +155,29 @@ app.post('/signup', function(req, res){
 	let inputusername = req.body.username
   let inputemail = req.body.email
 	let inputpassword = req.body.password
-  let passwordhashed
+  let confirmpassword = req.body.confirmpassword
+
+
+  if(inputusername.length<0){
+    res.redirect('/signup?message=' + encodeURIComponent("Please enter your username"));
+    return;
+  }
+
+  if(inputemail.length<0){
+    res.redirect('/signup?message=' + encodeURIComponent("Please enter your email"));
+    return;
+  }
+
+
+  if(inputpassword!==confirmpassword){
+    res.redirect('/signup?message=' + encodeURIComponent("Your password doesn't match"));
+    return;
+  }
+
+ if(inputpassword.length<8 || confirmpassword.length<8){
+   res.redirect('/signup?message=' + encodeURIComponent("Your password is too short"));
+   return;
+ }
 
 
 	console.log("I am receiving following user credentials: "+inputusername+" "+inputpassword);
